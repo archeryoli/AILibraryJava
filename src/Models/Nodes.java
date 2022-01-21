@@ -58,7 +58,11 @@ public class Nodes {
             return false;
         }
         for(Map.Entry<Nodes, Float> linkedNode: _linkedNodes.entrySet()){
-            linkedNode.getKey().setWeightScoreSum(getWeightScoreSum() * linkedNode.getValue());
+            Nodes newNode = linkedNode.getKey();
+            newNode.setWeightScoreSum(getWeightScoreSum() * linkedNode.getValue());
+            _linkedNodes.remove(linkedNode.getKey());
+            _linkedNodes.put(newNode, linkedNode.getValue());
+
         }
         return true;
     }
