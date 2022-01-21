@@ -4,8 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Network {
-    private List<Nodes> _inputNodes = new ArrayList<>();
+    private List<Node> _inputNodes = new ArrayList<>();
 
-    int score;
+    private int score;
+
+    public void addInputNodes(Node node){
+        _inputNodes.add(node);
+    }
+    public List<Node> getInputNodes(){
+        return _inputNodes;
+    }
+
+    @Override
+    public String toString(){
+        String k = "";
+        for(Node node: _inputNodes){
+            k += node + "\n";
+        }
+        return k;
+    }
 
 }
