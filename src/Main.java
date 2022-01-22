@@ -3,13 +3,14 @@ import Models.NodeType;
 import Models.Node;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Network network = new Network();
         Random rand = new Random();
+        HashMap<Integer, List<Node>> net = new HashMap<>();
 
         Node n1 = new Node(NodeType.INPUT, null);
         Node n2 = new Node(NodeType.INPUT, null);
@@ -23,6 +24,34 @@ public class Main {
 
         List<Node> middleNodes = new ArrayList<>();
         List<Node> inputNodes = new ArrayList<>();
+        List<Node> outputNodes = new ArrayList<>();
+
+        n1.addWeights((float)0.1);
+        n1.addWeights((float)0.3);
+        n1.addWeights((float)0.5);
+        n1.addWeights((float)0.7);
+        n1.addWeights((float)0.9);
+
+        n2.addWeights((float)1);
+        n2.addWeights((float)0.8);
+        n2.addWeights((float)0.6);
+        n2.addWeights((float)0.4);
+        n2.addWeights((float)0.2);
+
+        n3.addWeights((float)0.4);
+        n3.addWeights((float)0.6);
+
+        n4.addWeights((float)0.4);
+        n4.addWeights((float)0.6);
+
+        n5.addWeights((float)0.4);
+        n5.addWeights((float)0.6);
+
+        n6.addWeights((float)0.4);
+        n6.addWeights((float)0.6);
+
+        n7.addWeights((float)0.4);
+        n7.addWeights((float)0.6);
 
         middleNodes.add(n3);
         middleNodes.add(n4);
@@ -30,35 +59,18 @@ public class Main {
         middleNodes.add(n6);
         middleNodes.add(n7);
 
-        for(Node node: middleNodes){
-            node.addLinkedNode(n8, 1- rand.nextFloat() * 2);
-            node.addLinkedNode(n9, 1- rand.nextFloat() * 2);
-
-        }
-
         inputNodes.add(n1);
         inputNodes.add(n2);
 
-        for(Node node: inputNodes){
-            node.addLinkedNode(n3, 1- rand.nextFloat() * 2);
-            node.addLinkedNode(n4, 1- rand.nextFloat() * 2);
-            node.addLinkedNode(n5, 1- rand.nextFloat() * 2);
-            node.addLinkedNode(n6, 1- rand.nextFloat() * 2);
-            node.addLinkedNode(n7, 1- rand.nextFloat() * 2);
-        }
+        outputNodes.add(n8);
+        outputNodes.add(n9);
 
-        network.addInputNodes(n1);
-        network.addInputNodes(n2);
+        net.put(1, inputNodes);
+        net.put(2, middleNodes);
+        net.put(3, outputNodes);
 
+        Network network = new Network(net);
 
-        System.out.println(n1);
-        System.out.println(n2);
-        System.out.println(n3);
-        System.out.println(n4);
-        System.out.println(n5);
-        System.out.println(n6);
-        System.out.println(n7);
-        System.out.println(n8);
-        System.out.println(n9);
+        System.out.println(network);
     }
 }
