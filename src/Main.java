@@ -51,7 +51,14 @@ public class Main {
         network.addInputNodes(n2);
 
 
-        System.out.println(network);
-
+        System.out.println(n1);
+        System.out.println(n2);
+        System.out.println(n3);
+        System.out.println(n4);
+        System.out.println(n5);
+        System.out.println(n6);
+        System.out.println(n7);
+        System.out.println(n8);
+        System.out.println(n9);
     }
 }

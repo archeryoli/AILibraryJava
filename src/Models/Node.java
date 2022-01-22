@@ -77,6 +77,6 @@ public class Node {
     @Override
     public String toString(){
         addValueToLowerNodes();
-        return this.getNodeType() + ": " + getWeightScoreSum() + _linkedNodes.values();
+        return this.getNodeType() + ": " + getWeightScoreSum() + _linkedNodes.values() + "\n" + _linkedNodes.keySet();
     }
 }
