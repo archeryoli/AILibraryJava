@@ -25,7 +25,7 @@ public class Main {
         List<Node> middleNodes = new ArrayList<>();
         List<Node> inputNodes = new ArrayList<>();
         List<Node> outputNodes = new ArrayList<>();
-
+/*
         n1.addWeights((float)0.1);
         n1.addWeights((float)0.3);
         n1.addWeights((float)0.5);
@@ -52,7 +52,7 @@ public class Main {
 
         n7.addWeights((float)0.4);
         n7.addWeights((float)0.6);
-
+*/
         middleNodes.add(n3);
         middleNodes.add(n4);
         middleNodes.add(n5);
@@ -70,7 +70,9 @@ public class Main {
         net.put(3, outputNodes);
 
         Network network = new Network(net);
+        network.randomizeWeights();
 
         System.out.println(network);
+        System.out.println(network.maxOutput());
     }
 }

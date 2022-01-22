@@ -23,6 +23,7 @@ public class Node {
     }
     public void setWeights(List<Float> weights){
         if(weights == null){
+            _weights.clear();
             return;
         }
         for(Float f: weights){
@@ -36,7 +37,6 @@ public class Node {
     public float getWeightScoreSum(){
         return this._weightScoreSum;
     }
-
 
 
 
