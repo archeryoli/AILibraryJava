@@ -10,7 +10,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         Random rand = new Random();
-        HashMap<Integer, List<Node>> net = new HashMap<>();
+        List<List<Node>> net = new ArrayList<>();
 
         Node n1 = new Node(0, NodeType.INPUT, null);
         Node n2 = new Node(1, NodeType.INPUT, null);
@@ -65,9 +65,9 @@ public class Main {
         outputNodes.add(n8);
         outputNodes.add(n9);
 
-        net.put(1, inputNodes);
-        net.put(2, middleNodes);
-        net.put(3, outputNodes);
+        net.add(inputNodes);
+        net.add(middleNodes);
+        net.add(outputNodes);
 
         Network network = new Network(net);
         network.randomizeWeights();
@@ -75,5 +75,7 @@ public class Main {
         System.out.println(network);
         System.out.println(network.maxOutput());
         System.out.println(network.getMaxOutputPath());
+        //network.randomizeWeights2();
+        System.out.println(network);
     }
 }

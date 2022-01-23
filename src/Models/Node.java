@@ -83,6 +83,6 @@ public class Node {
 
     @Override
     public String toString(){
-        return this.getId() + " " +this.getNodeType() + ": " + getWeightScoreSum();
+        return this.getId() + " " +this.getNodeType() + ": " + getWeightScoreSum() + " " + this.getWeights();
     }
 }
