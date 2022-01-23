@@ -5,11 +5,19 @@ import java.util.*;
 public class Node {
     Random rand = new Random();
 
+    private int _id;
     private NodeType _nodeType;
     private List<Float> _weights = new ArrayList<>();
     private float _weightScoreSum;
 
-
+    public void setId(int id){
+        if(id >= 0){
+            this._id = id;
+        }
+    }
+    public int getId(){
+        return _id;
+    }
 
     public void setNodeType(NodeType nodeType){
         this._nodeType = nodeType;
@@ -41,10 +49,11 @@ public class Node {
 
 
     public Node(){
-        this(NodeType.OTHER, null);
+        this(0, NodeType.OTHER, null);
     }
-    public Node(NodeType type, List<Float> weights){
+    public Node(int id, NodeType type, List<Float> weights){
         this.setNodeType(type);
+        this.setId(id);
         if(this.getNodeType() == NodeType.INPUT){
             this.setWeightScoreSum(1);
         }
@@ -74,6 +83,6 @@ public class Node {
 
     @Override
     public String toString(){
-        return this.getNodeType() + ": " + getWeightScoreSum();
+        return this.getId() + " " +this.getNodeType() + ": " + getWeightScoreSum();
     }
 }

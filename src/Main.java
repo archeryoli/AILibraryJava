@@ -12,15 +12,15 @@ public class Main {
         Random rand = new Random();
         HashMap<Integer, List<Node>> net = new HashMap<>();
 
-        Node n1 = new Node(NodeType.INPUT, null);
-        Node n2 = new Node(NodeType.INPUT, null);
-        Node n3 = new Node(NodeType.MIDDLE, null);
-        Node n4 = new Node(NodeType.MIDDLE, null);
-        Node n5 = new Node(NodeType.MIDDLE, null);
-        Node n6 = new Node(NodeType.MIDDLE, null);
-        Node n7 = new Node(NodeType.MIDDLE, null);
-        Node n8 = new Node(NodeType.OUTPUT, null);
-        Node n9 = new Node(NodeType.OUTPUT, null);
+        Node n1 = new Node(0, NodeType.INPUT, null);
+        Node n2 = new Node(1, NodeType.INPUT, null);
+        Node n3 = new Node(2, NodeType.MIDDLE, null);
+        Node n4 = new Node(3, NodeType.MIDDLE, null);
+        Node n5 = new Node(4, NodeType.MIDDLE, null);
+        Node n6 = new Node(5, NodeType.MIDDLE, null);
+        Node n7 = new Node(6, NodeType.MIDDLE, null);
+        Node n8 = new Node(7, NodeType.OUTPUT, null);
+        Node n9 = new Node(8, NodeType.OUTPUT, null);
 
         List<Node> middleNodes = new ArrayList<>();
         List<Node> inputNodes = new ArrayList<>();
@@ -74,5 +74,6 @@ public class Main {
 
         System.out.println(network);
         System.out.println(network.maxOutput());
+        System.out.println(network.getMaxOutputPath());
     }
 }

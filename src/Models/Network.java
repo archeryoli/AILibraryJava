@@ -65,6 +65,27 @@ public class Network {
         }
         return maxID;
     }
+    public List<Node> getMaxOutputPath(){
+        int idOfMaxOutput = maxOutput();
+        List<Node> path = new ArrayList<>();
+        path.add(_networkNodes.get(getNetworkNodes().size()).get(idOfMaxOutput));
+        int oldMaxId = idOfMaxOutput;
+        for(int i = getNetworkNodes().size()-1; i >= 1; i--){
+            float max = 0;
+            int maxId = 0;
+            int counter = 0;
+            for(Node node: _networkNodes.get(i)){
+                if(counter == 0 || max < node.getWeights().get(oldMaxId)){
+                    max = node.getWeights().get(oldMaxId);
+                    maxId = counter;
+                }
+                counter++;
+            }
+            oldMaxId = maxId;
+            path.add(_networkNodes.get(i).get(maxId));
+        }
+        return path;
+    }
 
     @Override
     public String toString() {
