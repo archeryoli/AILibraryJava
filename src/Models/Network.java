@@ -72,30 +72,32 @@ public class Network {
         }
     }
     // randomizes all weights except the weights that led to the best output
-    /*
+
     public void randomizeWeights2(){
         List<Node> maxOutputPath = getMaxOutputPath();
         // nodes that have already been passed through
         int passedNodes = 0;
-        for(Map.Entry<Integer, List<Node>> entry: _networkNodes.entrySet()){
+        int layer = 0;
+        for(List<Node> networkLayer: getNetworkNodes()){
 
-            for(Node nodeInCurrentLayer: entry.getValue()){
-                nodeInCurrentLayer.setWeights(null);
-                if(entry.getKey() == getNetworkNodes().size()){
+            for(Node nodeInLayer: networkLayer){
+                nodeInLayer.setWeights(null);
+                if(layer + 1 == getNetworkNodes().size()){
                     return;
                 }
-                for(Node nodeInNextLayer: _networkNodes.get(entry.getKey())){
-                    if(nodeInNextLayer.getId() != maxOutputPath.get(entry.getKey()).getId()){
-                        nodeInCurrentLayer.addWeights(1 - (2 * rand.nextFloat()));
+                for(Node nodeInNextLayer: getNetworkNodes().get(layer + 1)){
+                    if(nodeInNextLayer.getId() != maxOutputPath.get(layer + 1).getId()){
+                        nodeInLayer.addWeights(1 - (2 * rand.nextFloat()));
                     }else{
-                        nodeInCurrentLayer.addWeights(maxOutputPath.get(entry.getKey()).getWeights().get(maxOutputPath.get(entry.getKey()).getId() - passedNodes));
+                        nodeInLayer.addWeights(maxOutputPath.get(layer + 1).getWeights().get(maxOutputPath.get(layer + 1).getId() - passedNodes));
                     }
                 }
                 passedNodes++;
             }
+            layer++;
         }
     }
-    */
+
 
     public int maxOutput(){
         int maxID = 0;
@@ -110,6 +112,7 @@ public class Network {
         }
         return maxID;
     }
+    // TODO change function to output hashmap to also output the max weight so it´s easier to implement randomizeWeights 2
     public List<Node> getMaxOutputPath(){
         int idOfMaxOutput = maxOutput();
         List<Node> path = new ArrayList<>();

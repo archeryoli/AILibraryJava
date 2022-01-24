@@ -72,10 +72,14 @@ public class Main {
         Network network = new Network(net);
         network.randomizeWeights();
 
+        System.out.println("Network: ");
         System.out.println(network);
+        System.out.println("Index of max output Node: ");
         System.out.println(network.maxOutput());
+        System.out.println("Get path of the max Output");
         System.out.println(network.getMaxOutputPath());
-        //network.randomizeWeights2();
+        System.out.println("Randomized Network");
+        network.randomizeWeights2();
         System.out.println(network);
     }
 }
