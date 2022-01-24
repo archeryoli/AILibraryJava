@@ -70,7 +70,7 @@ public class Main {
         net.add(outputNodes);
 
         Network network = new Network(net);
-        network.randomizeWeights();
+        //network.randomizeWeights();
 
         System.out.println(network);
         System.out.println(network.maxOutput());

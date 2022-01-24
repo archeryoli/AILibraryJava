@@ -24,16 +24,30 @@ public class Network {
     // TODO find a way to print network twice with same result
     private void calculateWeights(){
         int layer = 0;
+        clearNodeWeights();
         for(List<Node> networkLayer: getNetworkNodes()){
             for(Node nodeInLayer: networkLayer){
 
                 if(layer == getNetworkNodes().size() || nodeInLayer.getWeights().size() == 0){
                     return;
                 }
+
                 int counter = 0;
                 for(Node node: getNetworkNodes().get(layer+1)){
+
                     node.addScore(nodeInLayer.getWeights().get(counter) * nodeInLayer.getWeightScoreSum());
                     counter++;
+                }
+            }
+            layer++;
+        }
+    }
+    private void clearNodeWeights(){
+        int layer = 0;
+        for(List<Node> networkLayer: getNetworkNodes()){
+            for(Node nodeInLayer: networkLayer){
+                if(nodeInLayer.getNodeType() != NodeType.INPUT){
+                    nodeInLayer.setWeightScoreSum(0);
                 }
             }
             layer++;
